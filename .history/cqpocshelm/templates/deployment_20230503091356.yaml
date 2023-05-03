@@ -11,15 +11,15 @@ metadata:
   name: {{ .Values.Deploymentname }}
 spec:
   selector:
-    matchLabels: {{ - toYaml .Values.matchLabels| nindent 6 }}
+    matchLabels: { { - toYaml .Values.matchLabels| nindent 6 } }
   replicas: 5
   template:
     metadata:
-      labels: {{ - toYaml .Values.labels| nindent 8 }}
+      labels: { { - toYaml .Values.labels| nindent 8 } }
     spec:
       containers:
-        - image: {{ .Values.containers.image }}
-          imagePullPolicy: {{ .Values.containers.imagePullPolicy }}
-          name: {{ .Values.containers.name }}
+        - image: { { .Values.containers.image } }
+          imagePullPolicy: { { .Values.containers.imagePullPolicy } }
+          name: { { .Values.containers.name } }
           ports:
             - containerPort: 80

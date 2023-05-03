@@ -15,11 +15,11 @@ spec:
   replicas: 5
   template:
     metadata:
-      labels: {{ - toYaml .Values.labels| nindent 8 }}
+      labels: { { - toYaml .Values.labels| nindent 8 } }
     spec:
       containers:
-        - image: {{ .Values.containers.image }}
-          imagePullPolicy: {{ .Values.containers.imagePullPolicy }}
-          name: {{ .Values.containers.name }}
+        - image: { { .Values.containers.image } }
+          imagePullPolicy: { { .Values.containers.imagePullPolicy } }
+          name: { { .Values.containers.name } }
           ports:
             - containerPort: 80
